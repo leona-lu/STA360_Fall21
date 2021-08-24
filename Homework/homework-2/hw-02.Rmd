@@ -1,0 +1,35 @@
+---
+title: "hw-02-yl583"
+author: "Leona"
+date: "8/20/2021"
+output: html_document
+---
+
+2(c):
+Now, suppose you are measuring the number of seconds between lightning strikes during a storm, your prior is Gamma(0.1, 1.0), and your data is 
+
+```{r}
+set.seed(123)
+theta <- seq(0,1,length.out = 1000)
+
+# Data
+obs.data <- str(20.9, 69.7, 3.6, 21.8, 21.4, 0.4, 6.7, 10.0)
+n <- length(obs.data)
+x <- sum(obs.data)
+
+# Prior parameters
+a <- 0.1
+b <- 1.0 
+
+# Posterior parameter 
+plot(theta, dgamma(theta,a + 1 ,b + x),type = "l",
+     xlab = "theta",ylab = "")
+
+lines(theta, dgamma(theta,a,b), col = 2, lty = 2)
+
+legend("topright",legend = c("posterior","prior"),lty = c(1,2),col = c(1,2))
+
+
+```
+
+Plot the prior and posterior p.d.f.s. (Be sure to make your plots on a scale that allows you to clearly see the important features.)
